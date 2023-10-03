@@ -54,13 +54,13 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="<?= site_url('data_peminjam'); ?>" class="nav-link <?php if ($activeMenu == 'peminjam') { echo 'active bg-secondary'; } ?>">
+            <a href="<?= site_url('data_laporan'); ?>" class="nav-link <?php if ($activeMenu == 'laporan') { echo 'active bg-secondary'; } ?>">
               <i class="far fa-circle nav-icon"></i>
               <p>Cetak Laporan</p>
             </a>
           </li>
           <li class="nav-item">
-            <a href="<?= site_url('data_peminjam'); ?>" class="nav-link <?php if ($activeMenu == 'peminjam') { echo 'active bg-secondary'; } ?>">
+            <a href="" class="nav-link">
               <i class="far fa-circle nav-icon"></i>
               <p>Logout</p>
             </a>

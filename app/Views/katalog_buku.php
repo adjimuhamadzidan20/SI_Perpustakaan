@@ -60,7 +60,7 @@
                       <td><?= $buku['nama_penerbit']; ?></td>
                       <td><?= $buku['tahun_terbit']; ?></td>
                       <td><?= $buku['jumlah_buku']; ?></td>
-                      <td>
+                      <td class="text-center">
                         <button type="button" class="btn btn-info btn-sm" 
                           data-toggle="modal" 
                           data-target="#modaleditbuku"
@@ -137,7 +137,7 @@
               <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Penerbit</label>
                 <select class="form-control" aria-label="Default select example" name="penerbit">
-                  <option selected="selected" readonly="readonly">Pilih Penerbit</option>
+                  <option selected="selected" readonly="readonly">-- Pilih penerbit --</option>
                   <?php foreach ($penerbit as $namaPenerbit) : ?>
                     <option value="<?= $namaPenerbit['id_penerbit']; ?>"><?= $namaPenerbit['nama_penerbit']; ?></option>
                   <?php endforeach; ?>
@@ -195,7 +195,6 @@
               <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Penerbit</label>
                 <select class="form-control" aria-label="Default select example" id="penerbit" name="penerbit">
-                  <option selected="selected" readonly="readonly">Pilih Penerbit</option>
                   <?php foreach ($penerbit as $namaPenerbit) : ?>
                     <option value="<?= $namaPenerbit['id_penerbit']; ?>"><?= $namaPenerbit['nama_penerbit']; ?></option>
                   <?php endforeach; ?>

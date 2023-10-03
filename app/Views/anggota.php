@@ -58,7 +58,7 @@
                       <td><?= $anggota['jenis_kelamin']; ?></td>
                       <td><?= $anggota['tanggal_lahir']; ?></td>
                       <td><?= $anggota['alamat']; ?></td>
-                      <td>
+                      <td class="text-center">
                         <button class="btn btn-info btn-sm" 
                           data-toggle="modal" 
                           data-target="#editmodalanggota"
@@ -132,7 +132,7 @@
               <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Jenis Kelamin</label>
                 <select class="form-control" aria-label="Default select example" name="jeniskelamin">
-                  <option selected>Pilih Jenis Kelamin</option>
+                  <option selected>-- Pilih jenis kelamin --</option>
                   <option value="Laki-laki">Laki-laki</option>
                   <option value="Perempuan">Perempuan</option>
                 </select>

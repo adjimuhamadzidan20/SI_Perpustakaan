@@ -38,6 +38,7 @@ class Data_peminjam extends BaseController
         $keterlambatan = $this->request->getVar('keterlambatan');
 
         $modelPeminjam->addPeminjam($kodePinjam, $judulBuku, $namaAnggota, $tglPinjam, $tglKembali, $keterlambatan);
+        session()->setFlashData('pesan', 'Data peminjam berhasil tersimpan!');
         return redirect()->to('/data_peminjam');
     }
 
@@ -53,6 +54,7 @@ class Data_peminjam extends BaseController
         $keterlambatan = $this->request->getVar('keterlambatan');
 
         $modelPeminjam->editPeminjam($id, $kodePinjam, $judulBuku, $namaAnggota, $tglPinjam, $tglKembali, $keterlambatan);
+        session()->setFlashData('pesan', 'Data peminjam berhasil terupdate!');
         return redirect()->to('/data_peminjam');
     }
 
@@ -60,6 +62,7 @@ class Data_peminjam extends BaseController
         $modelPeminjam = new PeminjamanModel();
 
         $modelPeminjam->hapusPeminjam($id);
+        session()->setFlashData('pesan', 'Data peminjam berhasil terhapus!');
         return redirect()->to('/data_peminjam');
     }
 }

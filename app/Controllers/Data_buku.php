@@ -36,6 +36,7 @@ class Data_buku extends BaseController
         $jumlah = $this->request->getVar('jumlah');
 
         $modelBuku = $modelBuku->addBuku($kode, $judulBuku, $pengarang, $penerbit, $tahun, $jumlah);
+        session()->setFlashData('pesan', 'Data buku berhasil tersimpan!');
         return redirect()->to('/data_buku');
     }
 
@@ -51,6 +52,7 @@ class Data_buku extends BaseController
         $jumlah = $this->request->getVar('jumlah');
 
         $modelBuku = $modelBuku->editBuku($id, $kode, $judulBuku, $pengarang, $penerbit, $tahun, $jumlah);
+        session()->setFlashData('pesan', 'Data buku berhasil terupdate!');
         return redirect()->to('/data_buku');
     }
 
@@ -58,6 +60,7 @@ class Data_buku extends BaseController
         $modelBuku = new KoleksibukuModel();
 
         $modelBuku->hapusBuku($id);
+        session()->setFlashData('pesan', 'Data buku berhasil terhapus!');
         return redirect()->to('/data_buku');
     }
 }

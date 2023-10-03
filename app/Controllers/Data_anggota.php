@@ -33,6 +33,7 @@ class Data_anggota extends BaseController
         $alamat = $this->request->getVar('alamat');
 
         $modelAnggota->addAnggota($kode, $nama, $jenkel, $tgllahir, $alamat);
+        session()->setFlashData('pesan', 'Data anggota berhasil tersimpan!');
         return redirect()->to('/data_anggota');
     }
 
@@ -47,6 +48,7 @@ class Data_anggota extends BaseController
         $alamat = $this->request->getVar('alamat');
 
         $modelAnggota->editAnggota($id, $kode, $nama, $jenkel, $tgllahir, $alamat);
+        session()->setFlashData('pesan', 'Data anggota berhasil terupdate!');
         return redirect()->to('/data_anggota');
     }
 
@@ -54,6 +56,7 @@ class Data_anggota extends BaseController
         $modelAnggota = new AnggotaModel();
 
         $modelAnggota->hapusAnggota($id);
+        session()->setFlashData('pesan', 'Data anggota berhasil terhapus!');
         return redirect()->to('/data_anggota');
     }
 }

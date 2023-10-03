@@ -52,7 +52,7 @@
                       <td><?= $no; ?></td>
                       <td><?= $penerbit['kode']; ?></td>
                       <td><?= $penerbit['nama_penerbit']; ?></td>
-                      <td>
+                      <td class="text-center">
                         <button class="btn btn-info btn-sm" 
                           data-toggle="modal" 
                           data-target="#editmodalpenerbit"

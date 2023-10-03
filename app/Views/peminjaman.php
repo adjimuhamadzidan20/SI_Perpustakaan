@@ -60,7 +60,7 @@
                       <td><?= $peminjam['tanggal_pinjam']; ?></td>
                       <td><?= $peminjam['tanggal_kembali']; ?></td>
                       <td><?= $peminjam['keterlambatan']; ?></td>
-                      <td>
+                      <td class="text-center">
                         <button class="btn btn-info btn-sm" 
                           data-toggle="modal" 
                           data-target="#modaleditpeminjam"
@@ -128,7 +128,7 @@
               <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Judul Buku</label>
                 <select class="form-control" aria-label="Default select example" name="judulbuku">
-                  <option selected>Pilih Judul Buku</option>
+                  <option selected>-- Pilih judul buku --</option>
                   <?php
                     foreach ($buku as $judulBuku) : 
                   ?>
@@ -139,7 +139,7 @@
               <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Nama Anggota</label>
                 <select class="form-control" aria-label="Default select example" name="anggota">
-                  <option selected>Pilih Nama Anggota</option>
+                  <option selected>-- Pilih nama anggota --</option>
                   <?php
                     foreach ($anggota as $nama) : 
                   ?>
@@ -158,7 +158,7 @@
               <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Keterlambatan</label>
                 <select class="form-control" aria-label="Default select example" name="keterlambatan">
-                  <option selected>Keterlambatan</option>
+                  <option selected>-- Keterlambatan --</option>
                   <?php for ($i=0; $i <= 31; $i++) : ?>
                     <option value="<?= $i . ' Hari'; ?>"><?= $i . ' Hari'; ?></option>
                   <?php endfor; ?>
@@ -200,7 +200,6 @@
               <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Judul Buku</label>
                 <select class="form-control" aria-label="Default select example" id="judulbuku" name="judulbuku">
-                  <option selected>Pilih Judul Buku</option>
                   <?php
                     foreach ($buku as $judulBuku) : 
                   ?>
@@ -211,7 +210,6 @@
               <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Nama Anggota</label>
                 <select class="form-control" aria-label="Default select example" id="anggota" name="anggota">
-                  <option selected>Pilih Nama Anggota</option>
                   <?php
                     foreach ($anggota as $nama) : 
                   ?>
@@ -230,7 +228,6 @@
               <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Keterlambatan</label>
                 <select class="form-control" aria-label="Default select example" id="keterlambatan" name="keterlambatan">
-                  <option selected>Keterlambatan</option>
                   <?php for ($i=0; $i <= 31; $i++) : ?>
                     <option value="<?= $i . ' Hari'; ?>"><?= $i . ' Hari'; ?></option>
                   <?php endfor; ?>

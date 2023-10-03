@@ -63,6 +63,8 @@
 <!-- <script src="plugins/datatables-buttons/js/buttons.html5.min.js"></script>
 <script src="plugins/datatables-buttons/js/buttons.print.min.js"></script>
 <script src="plugins/datatables-buttons/js/buttons.colVis.min.js"></script> -->
+<!-- Toastr -->
+<script src="plugins/toastr/toastr.min.js"></script>
 
 <script>
   $(function () {
@@ -157,6 +159,49 @@
   })
 
 </script>
+
+<script type="text/javascript">
+  let tabelAnggota = $('#anggota');
+  let tabelPenerbit = $('#penerbit');
+  let tabelBuku = $('#buku');
+  let tabelPeminjam = $('#peminjam');
+
+  $('#tampilkan').click(function() {
+    let pilihan = $('#laporan').val(); 
+
+    if (pilihan === 'anggota') {
+      tabelAnggota.show();
+      tabelPenerbit.hide();
+      tabelBuku.hide();
+      tabelPeminjam.hide();
+    }
+    else if (pilihan === 'penerbit') {
+      tabelAnggota.hide();
+      tabelPenerbit.show();
+      tabelBuku.hide();
+      tabelPeminjam.hide();
+    } 
+    else if (pilihan === 'buku') {
+      tabelAnggota.hide();
+      tabelPenerbit.hide();
+      tabelBuku.show();
+      tabelPeminjam.hide();
+    } 
+    else if (pilihan === 'peminjam') {
+      tabelAnggota.hide();
+      tabelPenerbit.hide();
+      tabelBuku.hide();
+      tabelPeminjam.show();
+    }
+  });
+
+</script>
+
+<?php if (session()->getFlashData('pesan')) : ?>
+  <script type="text/javascript">
+    toastr.success('<?= session()->getFlashData('pesan'); ?>')
+  </script>
+<?php endif; ?>
 
 </body>
 </html>

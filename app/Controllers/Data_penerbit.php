@@ -30,6 +30,7 @@ class Data_penerbit extends BaseController
         $namaPenerbit = $this->request->getVar('penerbit');
 
         $modelPenerbit->addPenerbit($kode, $namaPenerbit);
+        session()->setFlashData('pesan', 'Data penerbit berhasil tersimpan!');
         return redirect()->to('/data_penerbit');
     }
 
@@ -41,6 +42,7 @@ class Data_penerbit extends BaseController
         $namaPenerbit = $this->request->getVar('penerbit');
 
         $modelPenerbit->editPenerbit($id, $kode, $namaPenerbit);
+        session()->setFlashData('pesan', 'Data penerbit berhasil terupdate!');
         return redirect()->to('/data_penerbit');
     }
 
@@ -48,6 +50,7 @@ class Data_penerbit extends BaseController
         $modelPenerbit = new PenerbitModel();
 
         $modelPenerbit->hapusPenerbit($id);
+        session()->setFlashData('pesan', 'Data penerbit berhasil terhapus!');
         return redirect()->to('/data_penerbit');
     }
 }
