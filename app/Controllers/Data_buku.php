@@ -5,11 +5,16 @@ use App\Models\KoleksibukuModel;
 
 class Data_buku extends BaseController
 {
+    protected $modelBuku;
+
+    public function __construct() {
+        $this->modelBuku = new KoleksibukuModel();
+    }
+
     public function index()
-    {
-        $modelBuku = new KoleksibukuModel();
-        $hasil = $modelBuku->dataBuku();
-        $penerbit = $modelBuku->dataPenerbit();
+    { 
+        $hasil = $this->modelBuku->dataBuku();
+        $penerbit = $this->modelBuku->dataPenerbit();
 
         $data = [
             'title' => 'Data Buku',
@@ -26,41 +31,48 @@ class Data_buku extends BaseController
     }
 
     public function tambah() {
-        $modelBuku = new KoleksibukuModel();
-
         $kode = 'BPS';
-        $judulBuku = $this->request->getVar('judul');
-        $pengarang = $this->request->getVar('pengarang');
-        $penerbit = $this->request->getVar('penerbit');
-        $tahun = $this->request->getVar('tahun');
-        $jumlah = $this->request->getVar('jumlah');
+        $judulBuku = $this->request->getPost('judul_buku');
+        $pengarang = $this->request->getPost('nama_pengarang');
+        $penerbit = $this->request->getPost('nama_penerbit');
+        $tahun = $this->request->getPost('tahun_terbit');
+        $jumlah = $this->request->getPost('jumlah');
 
-        $modelBuku = $modelBuku->addBuku($kode, $judulBuku, $pengarang, $penerbit, $tahun, $jumlah);
+        $this->modelBuku->addBuku($kode, $judulBuku, $pengarang, $penerbit, $tahun, $jumlah);
         session()->setFlashData('pesan', 'Data buku berhasil tersimpan!');
         return redirect()->to('/data_buku');
     }
 
     public function editProses() {
-        $modelBuku = new KoleksibukuModel();
-
         $id = $this->request->getVar('id');
         $kode = $this->request->getVar('kode');
-        $judulBuku = $this->request->getVar('judul');
-        $pengarang = $this->request->getVar('pengarang');
-        $penerbit = $this->request->getVar('penerbit');
-        $tahun = $this->request->getVar('tahun');
+        $judulBuku = $this->request->getVar('judul_buku');
+        $pengarang = $this->request->getVar('nama_pengarang');
+        $penerbit = $this->request->getVar('nama_penerbit');
+        $tahun = $this->request->getVar('tahun_terbit');
         $jumlah = $this->request->getVar('jumlah');
 
-        $modelBuku = $modelBuku->editBuku($id, $kode, $judulBuku, $pengarang, $penerbit, $tahun, $jumlah);
+        $this->modelBuku->editBuku($id, $kode, $judulBuku, $pengarang, $penerbit, $tahun, $jumlah);
         session()->setFlashData('pesan', 'Data buku berhasil terupdate!');
         return redirect()->to('/data_buku');
     }
 
     public function deleteProses($id) {
-        $modelBuku = new KoleksibukuModel();
-
-        $modelBuku->hapusBuku($id);
+        $this->modelBuku->hapusBuku($id);
         session()->setFlashData('pesan', 'Data buku berhasil terhapus!');
         return redirect()->to('/data_buku');
+    }
+
+    public function cetak_buku() {
+        $hasil = $this->modelBuku->dataBuku();
+
+        $data = [
+            'title' => 'Cetak Laporan Buku',
+            'data' => $hasil
+        ];
+
+        echo view('partial/header', $data);
+        echo view('cetak_laporan/cetak_buku', $data);
+        echo view('partial/footer_cetak');
     }
 }

@@ -5,10 +5,14 @@ use App\Models\PenerbitModel;
 
 class Data_penerbit extends BaseController
 {
+    protected $modelPenerbit;
+
+    public function __construct() {
+        $this->modelPenerbit = new PenerbitModel();
+    }
     public function index()
     {
-        $modelPenerbit = new PenerbitModel();
-        $hasil = $modelPenerbit->dataPenerbit();
+        $hasil = $this->modelPenerbit->dataPenerbit();
 
         $data = [
             'title' => 'Data Penerbit',
@@ -24,33 +28,40 @@ class Data_penerbit extends BaseController
     }
 
     public function tambah() {
-        $modelPenerbit = new PenerbitModel();
-
         $kode = 'PPS';
-        $namaPenerbit = $this->request->getVar('penerbit');
+        $namaPenerbit = $this->request->getPost('nama_penerbit');
 
-        $modelPenerbit->addPenerbit($kode, $namaPenerbit);
+        $this->modelPenerbit->addPenerbit($kode, $namaPenerbit);
         session()->setFlashData('pesan', 'Data penerbit berhasil tersimpan!');
         return redirect()->to('/data_penerbit');
     }
 
     public function editProses() {
-        $modelPenerbit = new PenerbitModel();
+        $id = $this->request->getPost('id');
+        $kode = $this->request->getPost('kode');
+        $namaPenerbit = $this->request->getPost('nama_penerbit');
 
-        $id = $this->request->getVar('id');
-        $kode = $this->request->getVar('kode');
-        $namaPenerbit = $this->request->getVar('penerbit');
-
-        $modelPenerbit->editPenerbit($id, $kode, $namaPenerbit);
+        $this->modelPenerbit->editPenerbit($id, $kode, $namaPenerbit);
         session()->setFlashData('pesan', 'Data penerbit berhasil terupdate!');
         return redirect()->to('/data_penerbit');
     }
 
     public function deleteProses($id) {
-        $modelPenerbit = new PenerbitModel();
-
-        $modelPenerbit->hapusPenerbit($id);
+        $this->modelPenerbit->hapusPenerbit($id);
         session()->setFlashData('pesan', 'Data penerbit berhasil terhapus!');
         return redirect()->to('/data_penerbit');
+    }
+
+    public function cetak_penerbit() {
+        $hasil = $this->modelPenerbit->dataPenerbit();
+
+        $data = [
+            'title' => 'Cetak Laporan Penerbit',
+            'data' => $hasil
+        ];
+
+        echo view('partial/header', $data);
+        echo view('cetak_laporan/cetak_penerbit', $data);
+        echo view('partial/footer_cetak');
     }
 }

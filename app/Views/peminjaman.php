@@ -4,11 +4,11 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1 class="m-0"><?= $title; ?></h1>
+          <h1 class="m-0"><i class="fas fa-briefcase mr-2"></i><?= $title; ?></h1>
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="<?= site_url(); ?>">Home</a></li>
+            <li class="breadcrumb-item"><a href="<?= site_url(); ?>" class="link-bread">Home</a></li>
             <li class="breadcrumb-item active"><?= $title; ?></li>
           </ol>
         </div><!-- /.col -->
@@ -26,24 +26,24 @@
             <div class="card-header">
               <div class="row">
                 <div class="col d-flex justify-content-between align-items-center">
-                  <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#modal-lg">Tambah +</button>
-                  <h3 class="card-title">Data daftar peminjam buku perpustakaan</h3>
+                  <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#modal-lg" id="custom-button">Tambah +</button>
+                  <h3 class="card-title d-none d-sm-block">Data daftar peminjam buku perpustakaan</h3>
                 </div>
               </div>
             </div>
             <!-- /.card-header -->
-            <div class="card-body">
+            <div class="card-body table-responsive">
               <table id="example2" class="table table-bordered table-hover">
                 <thead>
                   <tr>
-                    <th>No</th>
-                    <th>Kode Pinjam</th>
-                    <th>Judul Buku</th>
-                    <th>Nama Anggota</th>
-                    <th>Tanggal Pinjam</th>
-                    <th>Tanggal Kembali</th>
-                    <th>Keterlambatan</th>
-                    <th>Opsi</th>
+                    <th nowrap="nowrap">No</th>
+                    <th nowrap="nowrap">Kode Pinjam</th>
+                    <th nowrap="nowrap">Judul Buku</th>
+                    <th nowrap="nowrap">Nama Anggota</th>
+                    <th nowrap="nowrap">Tanggal Pinjam</th>
+                    <th nowrap="nowrap">Tanggal Kembali</th>
+                    <th nowrap="nowrap">Keterlambatan</th>
+                    <th nowrap="nowrap">Opsi</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -53,41 +53,42 @@
                     $no++;
                   ?>
                     <tr>
-                      <td><?= $no; ?></td>
-                      <td><?= $peminjam['kode']; ?></td>
-                      <td><?= $peminjam['judul_buku']; ?></td>
-                      <td><?= $peminjam['nama_anggota']; ?></td>
-                      <td><?= $peminjam['tanggal_pinjam']; ?></td>
-                      <td><?= $peminjam['tanggal_kembali']; ?></td>
-                      <td><?= $peminjam['keterlambatan']; ?></td>
-                      <td class="text-center">
-                        <button class="btn btn-info btn-sm" 
+                      <td nowrap="nowrap"><?= $no; ?></td>
+                      <td nowrap="nowrap"><?= $peminjam['kode']; ?></td>
+                      <td nowrap="nowrap"><?= $peminjam['judul_buku']; ?></td>
+                      <td nowrap="nowrap"><?= $peminjam['nama_anggota']; ?></td>
+                      <td nowrap="nowrap"><?= $peminjam['tanggal_pinjam']; ?></td>
+                      <td nowrap="nowrap"><?= $peminjam['tanggal_kembali']; ?></td>
+                      <td nowrap="nowrap"><?= $peminjam['keterlambatan']; ?></td>
+                      <td class="text-center" nowrap="nowrap">
+                        <button type="button" class="btn btn-info btn-sm"
+                          id="custom-button" 
                           data-toggle="modal" 
                           data-target="#modaleditpeminjam"
                           data-id="<?= $peminjam['id_peminjam']; ?>",
-                          data-kode="<?= $peminjam['kode_pinjam']; ?>",
+                          data-kode="<?= $peminjam['kode']; ?>",
                           data-judulbuku="<?= $peminjam['id_buku']; ?>",
                           data-anggota="<?= $peminjam['id_anggota']; ?>",
                           data-tglpinjam="<?= $peminjam['tanggal_pinjam']; ?>",
                           data-tglkembali="<?= $peminjam['tanggal_kembali']; ?>",
                           data-keterlambatan="<?= $peminjam['keterlambatan']; ?>"
-                        >Edit</button>
+                        ><i class="fas fa-edit"></i> Edit</button>
 
-                        <button class="btn btn-info btn-sm" data-toggle="modal" data-target="#hapus<?= $peminjam['id_peminjam']; ?>">Delete</button>
+                        <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#hapus<?= $peminjam['id_peminjam']; ?>" id="custom-button"><i class="fas fa-trash"></i> Delete</button>
 
                         <!-- modal hapus data -->
                         <div class="modal fade" id="hapus<?= $peminjam['id_peminjam']; ?>">
                           <div class="modal-dialog modal-dialog-centered">
                             <div class="modal-content">
                               <div class="modal-header">
-                                <h5 class="modal-title">Hapus data peminjam?</h5>
+                                <h5 class="modal-title"><i class="fas fa-trash mr-2"></i>Hapus data peminjam?</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                   <span aria-hidden="true">&times;</span>
                                 </button>
                               </div>
                               <div class="modal-footer">
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
-                                <a href="/data_peminjam/deleteProses/<?= $peminjam['id_peminjam']; ?>" class="btn btn-info">Delete</a>
+                                <a href="/data_peminjam/deleteProses/<?= $peminjam['id_peminjam']; ?>" class="btn btn-info" id="custom-button">Delete</a>
                               </div>
                             </div>
                             <!-- /.modal-content -->
@@ -121,13 +122,13 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form action="/data_peminjam/tambah">
+      <form action="/data_peminjam/tambah" method="post">
         <div class="modal-body">
           <div class="row">
             <div class="col">
               <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Judul Buku</label>
-                <select class="form-control" aria-label="Default select example" name="judulbuku">
+                <select class="form-control custom-input" aria-label="Default select example" name="judul_buku" required="required">
                   <option selected>-- Pilih judul buku --</option>
                   <?php
                     foreach ($buku as $judulBuku) : 
@@ -138,7 +139,7 @@
               </div>
               <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Nama Anggota</label>
-                <select class="form-control" aria-label="Default select example" name="anggota">
+                <select class="form-control custom-input" aria-label="Default select example" name="nama_anggota" required="required">
                   <option selected>-- Pilih nama anggota --</option>
                   <?php
                     foreach ($anggota as $nama) : 
@@ -149,15 +150,15 @@
               </div>
               <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Tanggal Pinjam</label>
-                <input type="date" class="form-control" id="exampleFormControlInput1" name="tglpinjam">
+                <input type="date" class="form-control custom-input" id="exampleFormControlInput1" name="tgl_pinjam" required="required">
               </div>
               <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Tanggal Kembali</label>
-                <input type="date" class="form-control" id="exampleFormControlInput1" name="tglkembali">
+                <input type="date" class="form-control custom-input" id="exampleFormControlInput1" name="tgl_kembali" required="required">
               </div>
               <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Keterlambatan</label>
-                <select class="form-control" aria-label="Default select example" name="keterlambatan">
+                <select class="form-control custom-input" aria-label="Default select example" name="keterlambatan" required="required">
                   <option selected>-- Keterlambatan --</option>
                   <?php for ($i=0; $i <= 31; $i++) : ?>
                     <option value="<?= $i . ' Hari'; ?>"><?= $i . ' Hari'; ?></option>
@@ -169,7 +170,7 @@
         </div>
         <div class="modal-footer justify-content-between">
           <button type="button" class="btn btn-default" data-dismiss="modal">Kembali</button>
-          <button type="submit" class="btn btn-info">Simpan</button>
+          <button type="submit" class="btn btn-info" id="custom-button">Simpan</button>
         </div>
       </form>
     </div>
@@ -189,17 +190,19 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <form action="/data_peminjam/editProses">
+      <form action="/data_peminjam/editProses" method="post">
         <div class="modal-body">
           <div class="row">
             <div class="col">
               <div>
                 <input type="text" class="form-control" id="id" name="id" hidden>
-                <input type="text" class="form-control" id="kode" name="kode" hidden>
+              </div>
+              <div class="mb-3">
+                <input type="text" class="form-control" id="kode" name="kode" readonly>
               </div>
               <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Judul Buku</label>
-                <select class="form-control" aria-label="Default select example" id="judulbuku" name="judulbuku">
+                <select class="form-control custom-input" aria-label="Default select example" id="judul_buku" name="judul_buku" required="required">
                   <?php
                     foreach ($buku as $judulBuku) : 
                   ?>
@@ -209,7 +212,7 @@
               </div>
               <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Nama Anggota</label>
-                <select class="form-control" aria-label="Default select example" id="anggota" name="anggota">
+                <select class="form-control custom-input" aria-label="Default select example" id="nama_anggota" name="nama_anggota" required="required">
                   <?php
                     foreach ($anggota as $nama) : 
                   ?>
@@ -219,15 +222,15 @@
               </div>
               <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Tanggal Pinjam</label>
-                <input type="date" class="form-control" id="tglpinjam" name="tglpinjam">
+                <input type="date" class="form-control custom-input" id="tgl_pinjam" name="tgl_pinjam" required="required">
               </div>
               <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Tanggal Kembali</label>
-                <input type="date" class="form-control" id="tglkembali" name="tglkembali">
+                <input type="date" class="form-control custom-input" id="tgl_kembali" name="tgl_kembali" required="required">
               </div>
               <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Keterlambatan</label>
-                <select class="form-control" aria-label="Default select example" id="keterlambatan" name="keterlambatan">
+                <select class="form-control custom-input" aria-label="Default select example" id="keterlambatan" name="keterlambatan" required="required">
                   <?php for ($i=0; $i <= 31; $i++) : ?>
                     <option value="<?= $i . ' Hari'; ?>"><?= $i . ' Hari'; ?></option>
                   <?php endfor; ?>
@@ -238,7 +241,7 @@
         </div>
         <div class="modal-footer justify-content-between">
           <button type="button" class="btn btn-default" data-dismiss="modal">Kembali</button>
-          <button type="submit" class="btn btn-info">Edit</button>
+          <button type="submit" class="btn btn-info" id="custom-button">Edit</button>
         </div>
       </form>
     </div>

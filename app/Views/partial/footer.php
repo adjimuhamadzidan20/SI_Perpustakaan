@@ -80,12 +80,11 @@
   });
 </script>
 
+<!-- modal edit data -->
 <script>
   $('#editmodalanggota').on('show.bs.modal', function (event) {
-    // event.relatedtarget menampilkan elemen mana yang digunakan saat diklik.
     let button = $(event.relatedTarget)
 
-    // data-data yang disimpan pada tombol edit dimasukkan ke dalam variabelnya masing-masing
     let id_anggota    = button.data('id') 
     let kode_anggota  = button.data('kode')
     let nama_anggota  = button.data('nama')
@@ -94,12 +93,11 @@
     let alamat        = button.data('alamat')
     let modal = $(this)
 
-    //variabel di atas dimasukkan ke dalam element yang sesuai dengan idnya masing-masing
     modal.find('#id').val(id_anggota)
     modal.find('#kode').val(kode_anggota)
-    modal.find('#nama').val(nama_anggota)
-    modal.find('#jenkel').val(jenis_kelamin)
-    modal.find('#tgllahir').val(tanggal_lahir)
+    modal.find('#nama_anggota').val(nama_anggota)
+    modal.find('#jenis_kelamin').val(jenis_kelamin)
+    modal.find('#tgl_lahir').val(tanggal_lahir)
     modal.find('#alamat').val(alamat)
   })
 
@@ -113,7 +111,7 @@
 
     modal.find('#id').val(id_penerbit)
     modal.find('#kode').val(kode_penerbit)
-    modal.find('#penerbit').val(nama_penerbit)
+    modal.find('#nama_penerbit').val(nama_penerbit)
   })
 
   $('#modaleditbuku').on('show.bs.modal', function(event) {
@@ -130,10 +128,10 @@
 
     modal.find('#id').val(id_buku)
     modal.find('#kode').val(kode_buku)
-    modal.find('#judul').val(judul_buku)
-    modal.find('#pengarang').val(pengarang)
-    modal.find('#penerbit').val(penerbit)
-    modal.find('#tahun').val(tahun_terbit)
+    modal.find('#judul_buku').val(judul_buku)
+    modal.find('#nama_pengarang').val(pengarang)
+    modal.find('#nama_penerbit').val(penerbit)
+    modal.find('#tahun_terbit').val(tahun_terbit)
     modal.find('#jumlah').val(jumlah_buku)
   })
 
@@ -151,22 +149,23 @@
 
     modal.find('#id').val(id_peminjam)
     modal.find('#kode').val(kode_pinjam)
-    modal.find('#judulbuku').val(judul_buku)
-    modal.find('#anggota').val(anggota)
-    modal.find('#tglpinjam').val(tgl_pinjam)
-    modal.find('#tglkembali').val(tgl_kembali)
+    modal.find('#judul_buku').val(judul_buku)
+    modal.find('#nama_anggota').val(anggota)
+    modal.find('#tgl_pinjam').val(tgl_pinjam)
+    modal.find('#tgl_kembali').val(tgl_kembali)
     modal.find('#keterlambatan').val(keterlambatan)
   })
 
 </script>
 
+<!-- menampilkan data laporan -->
 <script type="text/javascript">
   let tabelAnggota = $('#anggota');
   let tabelPenerbit = $('#penerbit');
   let tabelBuku = $('#buku');
   let tabelPeminjam = $('#peminjam');
 
-  $('#tampilkan').click(function() {
+  $('#custom-button').click(function() {
     let pilihan = $('#laporan').val(); 
 
     if (pilihan === 'anggota') {
@@ -194,14 +193,34 @@
       tabelPeminjam.show();
     }
   });
-
 </script>
 
+<!-- pesan / alert popup -->
 <?php if (session()->getFlashData('pesan')) : ?>
   <script type="text/javascript">
     toastr.success('<?= session()->getFlashData('pesan'); ?>')
   </script>
 <?php endif; ?>
+
+<script>
+  const customButton = document.getElementById('custom-button');
+  let holdClick = false;
+
+  customButton.addEventListener('mousedown', function() {
+      holdClick = true;
+      customButton.style.backgroundColor = '#56173F'; // Ganti dengan warna latar belakang yang Anda inginkan
+      customButton.style.borderColor = '#56173F'; // Ganti dengan warna latar belakang yang Anda inginkan
+      customButton.style.color = 'white'; // Ganti dengan warna latar belakang yang Anda inginkan
+  });
+
+  customButton.addEventListener('mouseup', function() {
+      if (holdClick) {
+          customButton.style.backgroundColor = '#6F1E51'; // Kembalikan warna latar belakang awal
+          customButton.style.borderColor = '#6F1E51'; // Kembalikan warna latar belakang awal
+          holdClick = false;
+      }
+  });
+</script>
 
 </body>
 </html>

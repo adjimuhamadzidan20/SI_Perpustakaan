@@ -41,4 +41,10 @@ class PenerbitModel extends Model
         $deletePenerbit = $this->delete($id);
         return $deletePenerbit;
     }
+
+    public function jumlahPenerbit() {
+        $sql = "SELECT * FROM dt_penerbit";
+        $query = $this->query($sql);
+        return $query->getNumRows();
+    }
 }

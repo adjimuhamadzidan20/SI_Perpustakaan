@@ -5,22 +5,28 @@ use App\Models\AnggotaModel;
 use App\Models\PenerbitModel;
 use App\Models\KoleksibukuModel;
 use App\Models\PeminjamanModel;
-
 use App\Controllers\BaseController;
 
 class Data_laporan extends BaseController
-{
+{   
+    protected $modelAnggota;
+    protected $modelPenerbit;
+    protected $modelBuku;
+    protected $modelPeminjam;
+
+    public function __construct() {
+        $this->modelAnggota = new AnggotaModel();
+        $this->modelPenerbit = new PenerbitModel();
+        $this->modelBuku = new KoleksibukuModel();
+        $this->modelPeminjam = new PeminjamanModel();
+    }
+
     public function index()
     {
-        $modelAnggota = new AnggotaModel();
-        $modelPenerbit = new PenerbitModel();
-        $modelBuku = new KoleksibukuModel();
-        $modelPeminjam = new PeminjamanModel();
-
-        $hasil1 = $modelAnggota->dataAnggota();
-        $hasil2 = $modelPenerbit->dataPenerbit();
-        $hasil3 = $modelBuku->dataBuku();
-        $hasil4 = $modelPeminjam->dataPeminjam();
+        $hasil1 = $this->modelAnggota->dataAnggota();
+        $hasil2 = $this->modelPenerbit->dataPenerbit();
+        $hasil3 = $this->modelBuku->dataBuku();
+        $hasil4 = $this->modelPeminjam->dataPeminjam();
         
         $data = [
             'title' => 'Cetak Laporan',

@@ -47,4 +47,10 @@ class AnggotaModel extends Model
         $deleteAnggota = $this->delete($id);
         return $deleteAnggota;
     }
+
+    public function jumlahAnggota() {
+        $sql = "SELECT * FROM dt_anggota";
+        $query = $this->query($sql);
+        return $query->getNumRows();
+    }
 }

@@ -5,12 +5,17 @@ use App\Models\PeminjamanModel;
 
 class Data_peminjam extends BaseController
 {
+    protected $modelPeminjam;
+
+    public function __construct() {
+        $this->modelPeminjam = new PeminjamanModel();
+    }
+
     public function index()
     {
-        $modelPeminjam = new PeminjamanModel();
-        $hasil = $modelPeminjam->dataPeminjam();
-        $dtBuku = $modelPeminjam->judulBuku();
-        $dtAnggota = $modelPeminjam->namaAnggota();
+        $hasil = $this->modelPeminjam->dataPeminjam();
+        $dtBuku = $this->modelPeminjam->judulBuku();
+        $dtAnggota = $this->modelPeminjam->namaAnggota();
 
         $data = [
             'title' => 'Data Peminjaman',
@@ -28,41 +33,48 @@ class Data_peminjam extends BaseController
     }
 
     public function tambah() {
-        $modelPeminjam = new PeminjamanModel();
-
         $kodePinjam = 'PMPSI';
-        $judulBuku = $this->request->getVar('judulbuku');
-        $namaAnggota = $this->request->getVar('anggota');
-        $tglPinjam = $this->request->getVar('tglpinjam');
-        $tglKembali = $this->request->getVar('tglkembali');
-        $keterlambatan = $this->request->getVar('keterlambatan');
+        $judulBuku = $this->request->getPost('judul_buku');
+        $namaAnggota = $this->request->getPost('nama_anggota');
+        $tglPinjam = $this->request->getPost('tgl_pinjam');
+        $tglKembali = $this->request->getPost('tgl_kembali');
+        $keterlambatan = $this->request->getPost('keterlambatan');
 
-        $modelPeminjam->addPeminjam($kodePinjam, $judulBuku, $namaAnggota, $tglPinjam, $tglKembali, $keterlambatan);
+        $this->modelPeminjam->addPeminjam($kodePinjam, $judulBuku, $namaAnggota, $tglPinjam, $tglKembali, $keterlambatan);
         session()->setFlashData('pesan', 'Data peminjam berhasil tersimpan!');
         return redirect()->to('/data_peminjam');
     }
 
     public function editProses() {
-        $modelPeminjam = new PeminjamanModel();
+        $id = $this->request->getPost('id');
+        $kodePinjam = $this->request->getPost('kode');
+        $judulBuku = $this->request->getPost('judul_buku');
+        $namaAnggota = $this->request->getPost('nama_anggota');
+        $tglPinjam = $this->request->getPost('tgl_pinjam');
+        $tglKembali = $this->request->getPost('tgl_kembali');
+        $keterlambatan = $this->request->getPost('keterlambatan');
 
-        $id = $this->request->getVar('id');
-        $kodePinjam = $this->request->getVar('kode');
-        $judulBuku = $this->request->getVar('judulbuku');
-        $namaAnggota = $this->request->getVar('anggota');
-        $tglPinjam = $this->request->getVar('tglpinjam');
-        $tglKembali = $this->request->getVar('tglkembali');
-        $keterlambatan = $this->request->getVar('keterlambatan');
-
-        $modelPeminjam->editPeminjam($id, $kodePinjam, $judulBuku, $namaAnggota, $tglPinjam, $tglKembali, $keterlambatan);
+        $this->modelPeminjam->editPeminjam($id, $kodePinjam, $judulBuku, $namaAnggota, $tglPinjam, $tglKembali, $keterlambatan);
         session()->setFlashData('pesan', 'Data peminjam berhasil terupdate!');
         return redirect()->to('/data_peminjam');
     }
 
     public function deleteProses($id) {
-        $modelPeminjam = new PeminjamanModel();
-
-        $modelPeminjam->hapusPeminjam($id);
+        $this->modelPeminjam->hapusPeminjam($id);
         session()->setFlashData('pesan', 'Data peminjam berhasil terhapus!');
         return redirect()->to('/data_peminjam');
+    }
+
+    public function cetak_peminjam() {
+        $hasil = $this->modelPeminjam->dataPeminjam();
+
+        $data = [
+            'title' => 'Cetak Laporan Peminjaman',
+            'data' => $hasil
+        ];
+
+        echo view('partial/header', $data);
+        echo view('cetak_laporan/cetak_peminjaman', $data);
+        echo view('partial/footer_cetak');
     }
 }

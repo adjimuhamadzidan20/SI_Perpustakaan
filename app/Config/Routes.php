@@ -7,4 +7,7 @@ use CodeIgniter\Router\RouteCollection;
  */
 $routes->setAutoRoute(true);
 
-$routes->get('/', 'Dashboard::index');
+$routes->get('/', 'Halaman_utama::index', ['filter' => 'visitUser']);
+$routes->get('/halaman_utama', 'Halaman_utama::index', ['filter' => 'visitUser']);
+$routes->get('/dashboard', 'Dashboard::index', ['filter' => 'adminUser']);
+$routes->get('/login', 'Login::index', ['filter' => 'visitUser']);

@@ -4,11 +4,11 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1 class="m-0"><?= $title; ?></h1>
+          <h1 class="m-0"><i class="fas fa-clipboard mr-2"></i><?= $title; ?></h1>
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
-            <li class="breadcrumb-item"><a href="<?= site_url(); ?>">Home</a></li>
+            <li class="breadcrumb-item"><a href="<?= site_url(); ?>" class="link-bread">Home</a></li>
             <li class="breadcrumb-item active"><?= $title; ?></li>
           </ol>
         </div><!-- /.col -->
@@ -26,20 +26,20 @@
             <div class="card-header">
               <div class="row">
                 <div class="col d-flex justify-content-between align-items-center">
-                  <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#modal-lg">Tambah +</button>
-                  <h3 class="card-title">Data daftar nama penerbit</h3>
+                  <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#modal-lg" id="custom-button">Tambah +</button>
+                  <h3 class="card-title d-none d-sm-block">Data daftar nama penerbit</h3>
                 </div>
               </div>
             </div>
             <!-- /.card-header -->
-            <div class="card-body">
+            <div class="card-body table-responsive">
               <table id="example2" class="table table-bordered table-hover">
                 <thead>
                   <tr>
-                    <th>No</th>
-                    <th>Kode Penerbit</th>
-                    <th>Nama Penerbit</th>
-                    <th>Opsi</th>
+                    <th nowrap="nowrap">No</th>
+                    <th nowrap="nowrap">Kode Penerbit</th>
+                    <th nowrap="nowrap">Nama Penerbit</th>
+                    <th nowrap="nowrap">Opsi</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -49,33 +49,34 @@
                     $no++;
                   ?>
                     <tr>
-                      <td><?= $no; ?></td>
-                      <td><?= $penerbit['kode']; ?></td>
-                      <td><?= $penerbit['nama_penerbit']; ?></td>
-                      <td class="text-center">
-                        <button class="btn btn-info btn-sm" 
+                      <td nowrap="nowrap"><?= $no; ?></td>
+                      <td nowrap="nowrap"><?= $penerbit['kode']; ?></td>
+                      <td nowrap="nowrap"><?= $penerbit['nama_penerbit']; ?></td>
+                      <td class="text-center" nowrap="nowrap">
+                        <button type="button" class="btn btn-info btn-sm"
+                          id="custom-button" 
                           data-toggle="modal" 
                           data-target="#editmodalpenerbit"
                           data-id="<?= $penerbit['id_penerbit']; ?>"
-                          data-kode="<?= $penerbit['kode_penerbit']; ?>"
+                          data-kode="<?= $penerbit['kode']; ?>"
                           data-penerbit="<?= $penerbit['nama_penerbit']; ?>"
-                          >Edit</button>
+                          ><i class="fas fa-edit"></i> Edit</button>
 
-                        <button class="btn btn-info btn-sm" data-toggle="modal" data-target="#hapus<?= $penerbit['id_penerbit']; ?>">Delete</button>
+                        <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#hapus<?= $penerbit['id_penerbit']; ?>" id="custom-button"><i class="fas fa-trash"></i> Delete</button>
 
                         <!-- modal hapus data -->
                         <div class="modal fade" id="hapus<?= $penerbit['id_penerbit']; ?>">
                           <div class="modal-dialog modal-dialog-centered">
                             <div class="modal-content">
                               <div class="modal-header">
-                                <h5 class="modal-title">Hapus data penerbit?</h5>
+                                <h5 class="modal-title"><i class="fas fa-trash mr-2"></i>Hapus data penerbit?</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                   <span aria-hidden="true">&times;</span>
                                 </button>
                               </div>
                               <div class="modal-footer">
                                 <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
-                                <a href="/data_penerbit/deleteProses/<?= $penerbit['id_penerbit']; ?>" class="btn btn-info">Delete</a>
+                                <a href="/data_penerbit/deleteProses/<?= $penerbit['id_penerbit']; ?>" class="btn btn-info" id="custom-button">Delete</a>
                               </div>
                             </div>
                             <!-- /.modal-content -->
@@ -104,7 +105,7 @@
 <div class="modal fade" id="modal-lg">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
-      <form action="/data_penerbit/tambah">
+      <form action="/data_penerbit/tambah" method="post">
         <div class="modal-header">
           <h4 class="modal-title">Tambah data penerbit</h4>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -116,14 +117,14 @@
             <div class="col">
               <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Nama Penerbit</label>
-                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Masukkan Nama Penerbit" name="penerbit">
+                <input type="text" class="form-control custom-input" id="exampleFormControlInput1" placeholder="Masukkan Nama Penerbit" name="nama_penerbit" required="required">
               </div>
             </div>
           </div>              
         </div>
         <div class="modal-footer justify-content-between">
           <button type="button" class="btn btn-default" data-dismiss="modal">Kembali</button>
-          <button type="submit" class="btn btn-info">Simpan</button>
+          <button type="submit" class="btn btn-info" id="custom-button">Simpan</button>
         </div>
       </form>
     </div>
@@ -137,7 +138,7 @@
 <div class="modal fade" id="editmodalpenerbit">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
-      <form action="/data_penerbit/editProses">
+      <form action="/data_penerbit/editProses" method="post">
         <div class="modal-header">
           <h4 class="modal-title">Edit data penerbit</h4>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -149,18 +150,20 @@
             <div class="col">
               <div>
                 <input type="text" class="form-control" name="id" id="id" hidden>
-                <input type="text" class="form-control" name="kode" id="kode" hidden>
+              </div>
+              <div class="mb-3">
+                <input type="text" class="form-control" name="kode" id="kode" readonly>
               </div>
               <div class="mb-3">
                 <label for="exampleFormControlInput1" class="form-label">Nama Penerbit</label>
-                <input type="text" class="form-control" name="penerbit" id="penerbit">
+                <input type="text" class="form-control custom-input" name="nama_penerbit" id="nama_penerbit" required="required">
               </div>
             </div>
           </div>              
         </div>
         <div class="modal-footer justify-content-between">
           <button type="button" class="btn btn-default" data-dismiss="modal">Kembali</button>
-          <button type="submit" class="btn btn-info">Edit</button>
+          <button type="submit" class="btn btn-info" id="custom-button">Edit</button>
         </div>
       </form>
     </div>

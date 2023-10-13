@@ -57,4 +57,10 @@ class KoleksibukuModel extends Model
         $deleteBuku = $this->delete($id);
         return $deleteBuku;
     }
+
+    public function jumlahBuku() {
+        $sql = "SELECT * FROM dt_buku";
+        $query = $this->query($sql);
+        return $query->getNumRows();
+    }
 }

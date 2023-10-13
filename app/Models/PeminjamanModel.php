@@ -65,4 +65,10 @@ class PeminjamanModel extends Model
         $deletePinjam = $this->delete($id);
         return $deletePinjam;
     }
+
+    public function jumlahPeminjam() {
+        $sql = "SELECT * FROM dt_peminjam";
+        $query = $this->query($sql);
+        return $query->getNumRows();
+    }
 }
