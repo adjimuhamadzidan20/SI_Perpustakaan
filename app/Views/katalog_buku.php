@@ -42,7 +42,7 @@
                     <th nowrap="nowrap">Pengarang</th>
                     <th nowrap="nowrap">Penerbit</th>
                     <th nowrap="nowrap">Tahun Terbit</th>
-                    <th nowrap="nowrap">Jumlah Buku</th>
+                    <th nowrap="nowrap">Jumlah</th>
                     <th nowrap="nowrap">Opsi</th>
                   </tr>
                 </thead>
@@ -72,9 +72,10 @@
                           data-penerbit="<?= $buku['id_penerbit']; ?>",
                           data-tahun="<?= $buku['tahun_terbit']; ?>",
                           data-jumlah="<?= $buku['jumlah_buku']; ?>"
-                        ><i class="fas fa-edit"></i> Edit</button>
+                          title="Edit"
+                        ><i class="fas fa-edit"></i></button>
 
-                        <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#hapus<?= $buku['id_buku']; ?>" id="custom-button"><i class="fas fa-trash"></i> Delete</button>
+                        <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#hapus<?= $buku['id_buku']; ?>" id="custom-button" title="Hapus"><i class="fas fa-trash"></i></button>
 
                         <!-- modal hapus data -->
                         <div class="modal fade" id="hapus<?= $buku['id_buku']; ?>">

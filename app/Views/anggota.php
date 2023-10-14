@@ -69,9 +69,10 @@
                           data-jenkel="<?= $anggota['jenis_kelamin']; ?>" 
                           data-tgllahir="<?= $anggota['tanggal_lahir']; ?>" 
                           data-alamat="<?= $anggota['alamat']; ?>" 
-                        ><i class="fas fa-edit"></i> Edit</button>
+                          title="Edit"
+                        ><i class="fas fa-edit"></i></button>
 
-                        <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#hapus<?= $anggota['id_anggota']; ?>" id="custom-button"><i class="fas fa-trash"></i> Delete</button>
+                        <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#hapus<?= $anggota['id_anggota']; ?>" id="custom-button" title="Hapus"><i class="fas fa-trash"></i></button>
 
                         <!-- modal hapus data -->
                         <div class="modal fade" id="hapus<?= $anggota['id_anggota']; ?>">

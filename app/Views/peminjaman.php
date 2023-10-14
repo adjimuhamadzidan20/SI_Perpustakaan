@@ -72,9 +72,10 @@
                           data-tglpinjam="<?= $peminjam['tanggal_pinjam']; ?>",
                           data-tglkembali="<?= $peminjam['tanggal_kembali']; ?>",
                           data-keterlambatan="<?= $peminjam['keterlambatan']; ?>"
-                        ><i class="fas fa-edit"></i> Edit</button>
+                          title="Edit"
+                        ><i class="fas fa-edit"></i></button>
 
-                        <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#hapus<?= $peminjam['id_peminjam']; ?>" id="custom-button"><i class="fas fa-trash"></i> Delete</button>
+                        <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#hapus<?= $peminjam['id_peminjam']; ?>" id="custom-button" title="Hapus"><i class="fas fa-trash"></i></button>
 
                         <!-- modal hapus data -->
                         <div class="modal fade" id="hapus<?= $peminjam['id_peminjam']; ?>">

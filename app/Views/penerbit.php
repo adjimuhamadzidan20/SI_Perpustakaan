@@ -60,9 +60,10 @@
                           data-id="<?= $penerbit['id_penerbit']; ?>"
                           data-kode="<?= $penerbit['kode']; ?>"
                           data-penerbit="<?= $penerbit['nama_penerbit']; ?>"
-                          ><i class="fas fa-edit"></i> Edit</button>
+                          title="Edit"
+                          ><i class="fas fa-edit"></i></button>
 
-                        <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#hapus<?= $penerbit['id_penerbit']; ?>" id="custom-button"><i class="fas fa-trash"></i> Delete</button>
+                        <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#hapus<?= $penerbit['id_penerbit']; ?>" id="custom-button" title="Hapus"><i class="fas fa-trash"></i></button>
 
                         <!-- modal hapus data -->
                         <div class="modal fade" id="hapus<?= $penerbit['id_penerbit']; ?>">

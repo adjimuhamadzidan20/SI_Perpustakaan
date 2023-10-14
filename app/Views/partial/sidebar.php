@@ -1,7 +1,7 @@
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-light-primary">
     <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
+    <a href="<?= site_url('/dashboard'); ?>" class="brand-link">
       <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle">
       <span class="brand-text font-weight-normal h5">SI PERPUSTAKAAN</span>
     </a>
