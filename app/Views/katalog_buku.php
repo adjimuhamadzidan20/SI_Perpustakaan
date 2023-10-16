@@ -4,7 +4,7 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1 class="m-0"><i class="fas fa-book mr-2"></i><?= $title; ?></h1>
+          <h1 class="nama-halaman m-0"><i class="fas fa-book mr-2"></i><?= $title; ?></h1>
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
@@ -65,39 +65,24 @@
                           id="custom-button" 
                           data-toggle="modal" 
                           data-target="#modaleditbuku"
-                          data-id="<?= $buku['id_buku']; ?>",
-                          data-kode="<?= $buku['kode']; ?>",
-                          data-judul="<?= $buku['judul_buku']; ?>",
-                          data-pengarang="<?= $buku['pengarang']; ?>",
-                          data-penerbit="<?= $buku['id_penerbit']; ?>",
-                          data-tahun="<?= $buku['tahun_terbit']; ?>",
+                          data-id="<?= $buku['id_buku']; ?>"
+                          data-kode="<?= $buku['kode']; ?>"
+                          data-judul="<?= $buku['judul_buku']; ?>"
+                          data-pengarang="<?= $buku['pengarang']; ?>"
+                          data-penerbit="<?= $buku['id_penerbit']; ?>"
+                          data-tahun="<?= $buku['tahun_terbit']; ?>"
                           data-jumlah="<?= $buku['jumlah_buku']; ?>"
                           title="Edit"
                         ><i class="fas fa-edit"></i></button>
 
-                        <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#hapus<?= $buku['id_buku']; ?>" id="custom-button" title="Hapus"><i class="fas fa-trash"></i></button>
-
-                        <!-- modal hapus data -->
-                        <div class="modal fade" id="hapus<?= $buku['id_buku']; ?>">
-                          <div class="modal-dialog modal-dialog-centered">
-                            <div class="modal-content">
-                              <div class="modal-header">
-                                <h5 class="modal-title"><i class="fas fa-trash mr-2"></i>Hapus data buku?</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                  <span aria-hidden="true">&times;</span>
-                                </button>
-                              </div>
-                              <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
-                                <a href="/data_buku/deleteProses/<?= $buku['id_buku']; ?>" class="btn btn-info" id="custom-button">Delete</a>
-                              </div>
-                            </div>
-                            <!-- /.modal-content -->
-                          </div>
-                          <!-- /.modal-dialog -->
-                        </div>
-                        <!-- /.modal -->
-                        
+                        <button type="button" class="mdl-hapus-buku btn btn-info btn-sm" 
+                          data-toggle="modal" 
+                          data-target="#hapusmodalbuku" 
+                          id="custom-button" 
+                          title="Hapus"
+                          data-id="<?= $buku['id_buku']; ?>"
+                          data-judul="<?= $buku['judul_buku']; ?>"
+                        ><i class="fas fa-trash"></i></button>       
                       </td>
                     </tr>
                   <?php endforeach; ?>
@@ -113,6 +98,33 @@
     </div>
     <!-- /.container-fluid -->
   </section>
+
+<!-- modal hapus data -->
+<div class="modal fade" id="hapusmodalbuku">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fas fa-trash mr-2"></i>Hapus data buku</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form action="/data_buku/deleteProses" method="post">
+        <div class="modal-body">
+          <p id="pesan"></p>
+          <input type="hidden" name="idbuku" id="idbuku">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
+          <button type="submit" class="btn btn-info" id="custom-button">Delete</button>
+        </div>
+      </form>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
 
 <!-- modal tambah data -->
 <div class="modal fade" id="modal-lg">

@@ -46,7 +46,8 @@ class Data_penerbit extends BaseController
         return redirect()->to('/data_penerbit');
     }
 
-    public function deleteProses($id) {
+    public function deleteProses() {
+        $id = $this->request->getPost('idpenerbit');
         $this->modelPenerbit->hapusPenerbit($id);
         session()->setFlashData('pesan', 'Data penerbit berhasil terhapus!');
         return redirect()->to('/data_penerbit');
@@ -54,7 +55,7 @@ class Data_penerbit extends BaseController
 
     public function cetak_penerbit() {
         $hasil = $this->modelPenerbit->dataPenerbit();
-
+        $id = $this->request->getPost('id');
         $data = [
             'title' => 'Cetak Laporan Penerbit',
             'data' => $hasil

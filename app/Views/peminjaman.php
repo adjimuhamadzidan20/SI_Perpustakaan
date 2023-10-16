@@ -4,7 +4,7 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1 class="m-0"><i class="fas fa-briefcase mr-2"></i><?= $title; ?></h1>
+          <h1 class="nama-halaman m-0"><i class="fas fa-briefcase mr-2"></i><?= $title; ?></h1>
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
@@ -65,38 +65,24 @@
                           id="custom-button" 
                           data-toggle="modal" 
                           data-target="#modaleditpeminjam"
-                          data-id="<?= $peminjam['id_peminjam']; ?>",
-                          data-kode="<?= $peminjam['kode']; ?>",
-                          data-judulbuku="<?= $peminjam['id_buku']; ?>",
-                          data-anggota="<?= $peminjam['id_anggota']; ?>",
-                          data-tglpinjam="<?= $peminjam['tanggal_pinjam']; ?>",
-                          data-tglkembali="<?= $peminjam['tanggal_kembali']; ?>",
+                          data-id="<?= $peminjam['id_peminjam']; ?>"
+                          data-kode="<?= $peminjam['kode']; ?>"
+                          data-judulbuku="<?= $peminjam['id_buku']; ?>"
+                          data-anggota="<?= $peminjam['id_anggota']; ?>"
+                          data-tglpinjam="<?= $peminjam['tanggal_pinjam']; ?>"
+                          data-tglkembali="<?= $peminjam['tanggal_kembali']; ?>"
                           data-keterlambatan="<?= $peminjam['keterlambatan']; ?>"
                           title="Edit"
                         ><i class="fas fa-edit"></i></button>
 
-                        <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#hapus<?= $peminjam['id_peminjam']; ?>" id="custom-button" title="Hapus"><i class="fas fa-trash"></i></button>
-
-                        <!-- modal hapus data -->
-                        <div class="modal fade" id="hapus<?= $peminjam['id_peminjam']; ?>">
-                          <div class="modal-dialog modal-dialog-centered">
-                            <div class="modal-content">
-                              <div class="modal-header">
-                                <h5 class="modal-title"><i class="fas fa-trash mr-2"></i>Hapus data peminjam?</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                  <span aria-hidden="true">&times;</span>
-                                </button>
-                              </div>
-                              <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
-                                <a href="/data_peminjam/deleteProses/<?= $peminjam['id_peminjam']; ?>" class="btn btn-info" id="custom-button">Delete</a>
-                              </div>
-                            </div>
-                            <!-- /.modal-content -->
-                          </div>
-                          <!-- /.modal-dialog -->
-                        </div>
-                        <!-- /.modal -->
+                        <button type="button" class="mdl-hapus-peminjam btn btn-info btn-sm" 
+                          data-toggle="modal"
+                          data-target="#hapusmodalpeminjam" 
+                          id="custom-button" 
+                          title="Hapus"
+                          data-id="<?= $peminjam['id_peminjam']; ?>"
+                          data-peminjam="<?= $peminjam['nama_anggota']; ?>"
+                        ><i class="fas fa-trash"></i></button>
                       </td>
                     </tr>
                   <?php endforeach; ?>
@@ -112,6 +98,33 @@
     </div>
     <!-- /.container-fluid -->
   </section>
+
+<!-- modal hapus data -->
+<div class="modal fade" id="hapusmodalpeminjam">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fas fa-trash mr-2"></i>Hapus data peminjam</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form action="/data_peminjam/deleteProses" method="post">
+        <div class="modal-body">
+          <p id="pesan"></p>
+          <input type="hidden" name="idpeminjam" id="idpeminjam">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
+          <button type="submit" class="btn btn-info" id="custom-button">Delete</button>
+        </div>
+      </form>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
 
 <!-- modal tambah data -->
 <div class="modal fade" id="modal-lg">

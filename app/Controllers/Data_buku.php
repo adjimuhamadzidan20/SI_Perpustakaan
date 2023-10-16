@@ -44,20 +44,21 @@ class Data_buku extends BaseController
     }
 
     public function editProses() {
-        $id = $this->request->getVar('id');
-        $kode = $this->request->getVar('kode');
-        $judulBuku = $this->request->getVar('judul_buku');
-        $pengarang = $this->request->getVar('nama_pengarang');
-        $penerbit = $this->request->getVar('nama_penerbit');
-        $tahun = $this->request->getVar('tahun_terbit');
-        $jumlah = $this->request->getVar('jumlah');
+        $id = $this->request->getPost('id');
+        $kode = $this->request->getPost('kode');
+        $judulBuku = $this->request->getPost('judul_buku');
+        $pengarang = $this->request->getPost('nama_pengarang');
+        $penerbit = $this->request->getPost('nama_penerbit');
+        $tahun = $this->request->getPost('tahun_terbit');
+        $jumlah = $this->request->getPost('jumlah');
 
         $this->modelBuku->editBuku($id, $kode, $judulBuku, $pengarang, $penerbit, $tahun, $jumlah);
         session()->setFlashData('pesan', 'Data buku berhasil terupdate!');
         return redirect()->to('/data_buku');
     }
 
-    public function deleteProses($id) {
+    public function deleteProses() {
+        $id = $this->request->getPost('idbuku');
         $this->modelBuku->hapusBuku($id);
         session()->setFlashData('pesan', 'Data buku berhasil terhapus!');
         return redirect()->to('/data_buku');

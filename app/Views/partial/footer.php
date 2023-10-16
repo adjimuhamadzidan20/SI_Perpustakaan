@@ -58,6 +58,49 @@
   });
 </script>
 
+<!-- modal hapus data -->
+<script type="text/javascript">
+  $(document).on('click', '.mdl-hapus-anggota', function(event) {
+    event.preventDefault();
+    let idAnggota = $(this).data('id');
+    let namaAnggota = $(this).data('anggota');
+
+    let textPesan = 'Yakin ingin menghapus '+ namaAnggota +'?';
+    $('#pesan').html(textPesan);
+    $('#idanggota').val(idAnggota);
+  });
+
+  $(document).on('click', '.mdl-hapus-penerbit', function(event) {
+    event.preventDefault();
+    let idPenerbit = $(this).data('id');
+    let namaPenerbit = $(this).data('penerbit');
+
+    let textPesan = 'Yakin ingin menghapus '+ namaPenerbit +'?';
+    $('#pesan').html(textPesan);
+    $('#idpenerbit').val(idPenerbit);
+  });
+
+  $(document).on('click', '.mdl-hapus-buku', function(event) {
+    event.preventDefault();
+    let idBuku = $(this).data('id');
+    let namaBuku = $(this).data('judul');
+
+    let textPesan = 'Yakin ingin menghapus '+ namaBuku +'?';
+    $('#pesan').html(textPesan);
+    $('#idbuku').val(idBuku);
+  });
+
+  $(document).on('click', '.mdl-hapus-peminjam', function(event) {
+    event.preventDefault();
+    let idPeminjam = $(this).data('id');
+    let namaPeminjam = $(this).data('peminjam');
+
+    let textPesan = 'Yakin ingin menghapus peminjam '+ namaPeminjam +'?';
+    $('#pesan').html(textPesan);
+    $('#idpeminjam').val(idPeminjam);
+  });
+</script>
+
 <!-- modal edit data -->
 <script>
   $('#editmodalanggota').on('show.bs.modal', function (event) {
@@ -185,18 +228,18 @@
   let holdClick = false;
 
   customButton.addEventListener('mousedown', function() {
-      holdClick = true;
-      customButton.style.backgroundColor = '#56173F'; // Ganti dengan warna latar belakang yang Anda inginkan
-      customButton.style.borderColor = '#56173F'; // Ganti dengan warna latar belakang yang Anda inginkan
-      customButton.style.color = 'white'; // Ganti dengan warna latar belakang yang Anda inginkan
+    holdClick = true;
+    customButton.style.backgroundColor = '#56173F'; // Ganti dengan warna latar belakang yang Anda inginkan
+    customButton.style.borderColor = '#56173F'; // Ganti dengan warna latar belakang yang Anda inginkan
+    customButton.style.color = 'white'; // Ganti dengan warna latar belakang yang Anda inginkan
   });
 
   customButton.addEventListener('mouseup', function() {
-      if (holdClick) {
-          customButton.style.backgroundColor = '#6F1E51'; // Kembalikan warna latar belakang awal
-          customButton.style.borderColor = '#6F1E51'; // Kembalikan warna latar belakang awal
-          holdClick = false;
-      }
+    if (holdClick) {
+      customButton.style.backgroundColor = '#6F1E51'; // Kembalikan warna latar belakang awal
+      customButton.style.borderColor = '#6F1E51'; // Kembalikan warna latar belakang awal
+      holdClick = false;
+    }
   });
 </script>
 

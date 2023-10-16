@@ -59,7 +59,8 @@ class Data_peminjam extends BaseController
         return redirect()->to('/data_peminjam');
     }
 
-    public function deleteProses($id) {
+    public function deleteProses() {
+        $id = $this->request->getPost('idpeminjam');
         $this->modelPeminjam->hapusPeminjam($id);
         session()->setFlashData('pesan', 'Data peminjam berhasil terhapus!');
         return redirect()->to('/data_peminjam');

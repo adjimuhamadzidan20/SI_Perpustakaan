@@ -4,7 +4,7 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1 class="m-0"><i class="fas fa-users mr-2"></i><?= $title; ?></h1>
+          <h1 class="nama-halaman m-0"><i class="fas fa-users mr-2"></i><?= $title; ?></h1>
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
@@ -72,29 +72,14 @@
                           title="Edit"
                         ><i class="fas fa-edit"></i></button>
 
-                        <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#hapus<?= $anggota['id_anggota']; ?>" id="custom-button" title="Hapus"><i class="fas fa-trash"></i></button>
-
-                        <!-- modal hapus data -->
-                        <div class="modal fade" id="hapus<?= $anggota['id_anggota']; ?>">
-                          <div class="modal-dialog modal-dialog-centered">
-                            <div class="modal-content">
-                              <div class="modal-header">
-                                <h5 class="modal-title"><i class="fas fa-trash mr-2"></i>Hapus data anggota?</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                  <span aria-hidden="true">&times;</span>
-                                </button>
-                              </div>
-                              <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
-                                <a href="/data_anggota/deleteProses/<?= $anggota['id_anggota']; ?>" class="btn btn-info" id="custom-button">Delete</a>
-                              </div>
-                            </div>
-                            <!-- /.modal-content -->
-                          </div>
-                          <!-- /.modal-dialog -->
-                        </div>
-                        <!-- /.modal -->
-
+                        <button type="button" class="mdl-hapus-anggota btn btn-info btn-sm" 
+                          data-toggle="modal" 
+                          data-target="#hapusmodalanggota" 
+                          id="custom-button" 
+                          data-id="<?= $anggota['id_anggota']; ?>"
+                          data-anggota="<?= $anggota['nama_anggota']; ?>"
+                          title="Hapus"
+                        ><i class="fas fa-trash"></i></button>
                       </td>
                     </tr>
                   <?php endforeach; ?>
@@ -112,6 +97,33 @@
   </section>
   </div>
   <!-- /.content-wrapper -->
+
+<!-- modal hapus data -->
+<div class="modal fade" id="hapusmodalanggota">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fas fa-trash mr-2"></i>Hapus data anggota</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form action="/data_anggota/deleteProses" method="post">
+        <div class="modal-body">
+          <p id="pesan"></p>
+          <input type="hidden" name="idanggota" id="idanggota">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
+          <button type="submit" class="btn btn-info" id="custom-button">Delete</button>
+        </div>
+      </form>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
 
 <!-- modal tambah data -->
 <div class="modal fade" id="modal-lg">

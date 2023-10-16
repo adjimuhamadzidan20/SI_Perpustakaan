@@ -102,18 +102,18 @@
     let holdClick = false;
 
     customButton.addEventListener('mousedown', function() {
-        holdClick = true;
-        customButton.style.backgroundColor = '#56173F'; // Ganti dengan warna latar belakang yang Anda inginkan
-        customButton.style.borderColor = '#56173F'; // Ganti dengan warna latar belakang yang Anda inginkan
-        customButton.style.color = 'white'; // Ganti dengan warna latar belakang yang Anda inginkan
+      holdClick = true;
+      customButton.style.backgroundColor = '#56173F'; // Ganti dengan warna latar belakang yang Anda inginkan
+      customButton.style.borderColor = '#56173F'; // Ganti dengan warna latar belakang yang Anda inginkan
+      customButton.style.color = 'white'; // Ganti dengan warna latar belakang yang Anda inginkan
     });
 
     customButton.addEventListener('mouseup', function() {
-        if (holdClick) {
-            customButton.style.backgroundColor = '#6F1E51'; // Kembalikan warna latar belakang awal
-            customButton.style.borderColor = '#6F1E51'; // Kembalikan warna latar belakang awal
-            holdClick = false;
-        }
+      if (holdClick) {
+        customButton.style.backgroundColor = '#6F1E51'; // Kembalikan warna latar belakang awal
+        customButton.style.borderColor = '#6F1E51'; // Kembalikan warna latar belakang awal
+        holdClick = false;
+      }
     });
   </script>
 </body>

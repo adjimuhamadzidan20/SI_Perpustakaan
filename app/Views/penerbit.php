@@ -4,7 +4,7 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1 class="m-0"><i class="fas fa-clipboard mr-2"></i><?= $title; ?></h1>
+          <h1 class="nama-halaman m-0"><i class="fas fa-clipboard mr-2"></i><?= $title; ?></h1>
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
@@ -63,29 +63,14 @@
                           title="Edit"
                           ><i class="fas fa-edit"></i></button>
 
-                        <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#hapus<?= $penerbit['id_penerbit']; ?>" id="custom-button" title="Hapus"><i class="fas fa-trash"></i></button>
-
-                        <!-- modal hapus data -->
-                        <div class="modal fade" id="hapus<?= $penerbit['id_penerbit']; ?>">
-                          <div class="modal-dialog modal-dialog-centered">
-                            <div class="modal-content">
-                              <div class="modal-header">
-                                <h5 class="modal-title"><i class="fas fa-trash mr-2"></i>Hapus data penerbit?</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                  <span aria-hidden="true">&times;</span>
-                                </button>
-                              </div>
-                              <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
-                                <a href="/data_penerbit/deleteProses/<?= $penerbit['id_penerbit']; ?>" class="btn btn-info" id="custom-button">Delete</a>
-                              </div>
-                            </div>
-                            <!-- /.modal-content -->
-                          </div>
-                          <!-- /.modal-dialog -->
-                        </div>
-                        <!-- /.modal -->
-                        
+                        <button type="button" class="mdl-hapus-penerbit btn btn-info btn-sm" 
+                          data-toggle="modal" 
+                          data-target="#hapusmodalpenerbit" 
+                          id="custom-button" 
+                          title="Hapus"
+                          data-id="<?= $penerbit['id_penerbit']; ?>"
+                          data-penerbit="<?= $penerbit['nama_penerbit']; ?>"
+                        ><i class="fas fa-trash"></i></button>
                       </td>
                     </tr>
                   <?php endforeach; ?>
@@ -101,6 +86,33 @@
     </div>
     <!-- /.container-fluid -->
   </section>
+
+<!-- modal hapus data -->
+<div class="modal fade" id="hapusmodalpenerbit">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fas fa-trash mr-2"></i>Hapus data penerbit</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form action="/data_penerbit/deleteProses" method="post">
+        <div class="modal-body">
+          <p id="pesan"></p>
+          <input type="hidden" name="idpenerbit" id="idpenerbit">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
+          <button type="submit" class="btn btn-info" id="custom-button">Delete</button>
+        </div>
+      </form>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
 
 <!-- modal tambah data -->
 <div class="modal fade" id="modal-lg">

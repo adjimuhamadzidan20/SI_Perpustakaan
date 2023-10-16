@@ -53,7 +53,8 @@ class Data_anggota extends BaseController
         return redirect()->to('/data_anggota');
     }
 
-    public function deleteProses($id) {
+    public function deleteProses() {
+        $id = $this->request->getPost('idanggota');
         $this->modelAnggota->hapusAnggota($id);
         session()->setFlashData('pesan', 'Data anggota berhasil terhapus!');
         return redirect()->to('/data_anggota');

@@ -72,6 +72,10 @@
       border-color: #56173F !important;
       color: white;
     }*/
+    
+    .nama-halaman {
+      color: #222f3e;
+    }
 
     .dataTables_paginate .paginate_button.page-item.active a {
       background-color: #6F1E51;
