@@ -12,8 +12,7 @@
       <!-- Sidebar Menu -->
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
+          <!-- Add icons to the links using the .nav-icon class with font-awesome or any other icon font library -->
           <li class="nav-item">
             <a href="<?= site_url('dashboard'); ?>" class="nav-link linkmenu <?php if ($activeMenu == 'dashboard') { echo 'active bg-secondary'; } ?>">
               <i class="fas fa-tachometer-alt nav-icon"></i>
@@ -75,7 +74,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
-          <a href="<?= site_url('login/logout'); ?>" class="btn btn-info">Logout</a>
+          <a href="<?= site_url('login/logout'); ?>" class="btn btn-info" id="custom-button">Logout</a>
         </div>
       </div>
       <!-- /.modal-content -->

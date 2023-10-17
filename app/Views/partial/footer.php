@@ -224,22 +224,32 @@
 <?php endif; ?>
 
 <script>
-  const customButton = document.getElementById('custom-button');
   let holdClick = false;
 
-  customButton.addEventListener('mousedown', function() {
+  document.addEventListener('mousedown', function() {
+    const customButton = document.querySelectorAll('#custom-button');
+
     holdClick = true;
-    customButton.style.backgroundColor = '#56173F'; // Ganti dengan warna latar belakang yang Anda inginkan
-    customButton.style.borderColor = '#56173F'; // Ganti dengan warna latar belakang yang Anda inginkan
-    customButton.style.color = 'white'; // Ganti dengan warna latar belakang yang Anda inginkan
+    for(let i = 0; i < customButton.length; i++) {
+      customButton[i].style.backgroundColor = '#56173F'; // Ganti dengan warna latar belakang yang Anda inginkan
+      customButton[i].style.borderColor = '#56173F'; // Ganti dengan warna latar belakang yang Anda inginkan
+      customButton[i].style.color = 'white'; // Ganti dengan warna latar belakang yang Anda inginkan
+    }
+
   });
 
-  customButton.addEventListener('mouseup', function() {
+  document.addEventListener('mouseup', function() {
+    const customButton = document.querySelectorAll('#custom-button');
+
     if (holdClick) {
-      customButton.style.backgroundColor = '#6F1E51'; // Kembalikan warna latar belakang awal
-      customButton.style.borderColor = '#6F1E51'; // Kembalikan warna latar belakang awal
-      holdClick = false;
+      for(let i = 0; i < customButton.length; i++) {
+        customButton[i].style.backgroundColor = '#6F1E51'; // Kembalikan warna latar belakang awal
+        customButton[i].style.borderColor = '#6F1E51'; // Kembalikan warna latar belakang awal 
+      }
+
+      holdClick = false; 
     }
+
   });
 </script>
 

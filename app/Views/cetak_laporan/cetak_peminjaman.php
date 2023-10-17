@@ -12,11 +12,11 @@
     <div class="card-body">
       <h5 class="mb-2">Laporan Data Peminjaman Perpustakaan</h5>
       <p class="mb-3"><?= $tgl1; ?></p>
-      <table class="table table-bordered">
+      <table border="1" width="100%" cellpadding="5">
         <thead>
           <tr>
             <th>No</th>
-            <th>Kode Pinjam</th>
+            <th>Kode</th>
             <th>Judul Buku</th>
             <th>Nama Anggota</th>
             <th>Tanggal Pinjam</th>

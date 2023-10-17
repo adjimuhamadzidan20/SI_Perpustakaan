@@ -12,11 +12,11 @@
     <div class="card-body">
       <h5 class="mb-2">Laporan Data Anggota Perpustakaan</h5>
       <p class="mb-3"><?= $tgl1; ?></p>  
-      <table class="table table-bordered">
+      <table border="1" width="100%" cellpadding="5">
         <thead>
           <tr>
             <th>No</th>
-            <th>Kode Anggota</th>
+            <th>Kode</th>
             <th>Nama Anggota</th>
             <th>Jenis Kelamin</th>
             <th>Tanggal lahir</th>
