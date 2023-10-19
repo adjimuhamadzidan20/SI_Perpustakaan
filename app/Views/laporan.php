@@ -40,7 +40,7 @@
                 <option value="peminjam">Data Peminjaman</option>
               </select>
 
-              <button type="button" class="btn btn-info btn-sm mt-3" id="custom-button">Tampilkan</button>
+              <button type="button" class="tampil btn btn-info btn-sm mt-3" id="custom-button">Tampilkan</button>
             </div>
           </div>
           

@@ -186,7 +186,7 @@
   let tabelBuku = $('#buku');
   let tabelPeminjam = $('#peminjam');
 
-  $('#custom-button').click(function() {
+  $('.tampil').click(function() {
     let pilihan = $('#laporan').val(); 
 
     if (pilihan === 'anggota') {

@@ -24,7 +24,7 @@ class Pager extends BaseConfig
         'default_full'   => 'CodeIgniter\Pager\Views\default_full',
         'default_simple' => 'CodeIgniter\Pager\Views\default_simple',
         'default_head'   => 'CodeIgniter\Pager\Views\default_head',
-        'paginasi_buku'   => 'App\Views\partial\paginasibuku',
+        'paginasi_buku'   => 'CodeIgniter\Pager\Views\paginasibuku',
     ];
 
     /**
